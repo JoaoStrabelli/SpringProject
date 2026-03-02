@@ -1,10 +1,16 @@
 package com.curso.springproject.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
@@ -64,7 +70,7 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
-        return Objects.equals(id, user.id);
+        return id == user.id;
     }
 
     @Override
